@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1078</width>
+    <height>963</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <layout class="QHBoxLayout" name="layout">
+      <item>
+       <layout class="QVBoxLayout" name="menuLayout" stretch="0,0,0,0">
+        <item>
+         <widget class="QPushButton" name="pushButton_3">
+          <property name="text">
+           <string>test</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupbox_datapickup">
+          <property name="title">
+           <string>Data Pickup</string>
+          </property>
+          <widget class="QCheckBox" name="checkbox_realtime">
+           <property name="geometry">
+            <rect>
+             <x>110</x>
+             <y>165</y>
+             <width>81</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>옵션거래(실)</string>
+           </property>
+          </widget>
+          <widget class="QComboBox" name="comboBox_year">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>193</y>
+             <width>76</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QComboBox" name="comboBox_monthmall">
+           <property name="geometry">
+            <rect>
+             <x>110</x>
+             <y>193</y>
+             <width>76</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QComboBox" name="comboBox_date">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>223</y>
+             <width>76</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QComboBox" name="comboBox_time">
+           <property name="geometry">
+            <rect>
+             <x>110</x>
+             <y>223</y>
+             <width>76</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_datapickup">
+           <property name="geometry">
+            <rect>
+             <x>19</x>
+             <y>165</y>
+             <width>81</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Option_Data</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_datapickup_future_s_M">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>30</y>
+             <width>81</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Future_s_M</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_datapickup_code_s_D">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>60</y>
+             <width>81</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Code_s_D</string>
+           </property>
+          </widget>
+          <widget class="QComboBox" name="comboBox_future_s_chain_month">
+           <property name="geometry">
+            <rect>
+             <x>110</x>
+             <y>29</y>
+             <width>76</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QComboBox" name="comboBox_code_s_day">
+           <property name="geometry">
+            <rect>
+             <x>22</x>
+             <y>90</y>
+             <width>76</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QRadioButton" name="radioButton_20">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>120</y>
+             <width>70</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>20</string>
+           </property>
+          </widget>
+          <widget class="QRadioButton" name="radioButton_60">
+           <property name="geometry">
+            <rect>
+             <x>110</x>
+             <y>120</y>
+             <width>70</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>60</string>
+           </property>
+          </widget>
+          <widget class="QRadioButton" name="radioButton_30">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>140</y>
+             <width>70</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>30</string>
+           </property>
+          </widget>
+          <widget class="QRadioButton" name="radioButton_40">
+           <property name="geometry">
+            <rect>
+             <x>110</x>
+             <y>140</y>
+             <width>70</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>40</string>
+           </property>
+          </widget>
+          <widget class="QCheckBox" name="checkbox_today_x">
+           <property name="geometry">
+            <rect>
+             <x>110</x>
+             <y>90</y>
+             <width>81</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>당일제외</string>
+           </property>
+          </widget>
+          <widget class="QComboBox" name="comboBox_date_s_day">
+           <property name="geometry">
+            <rect>
+             <x>110</x>
+             <y>60</y>
+             <width>76</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="tableWidget_optionprice">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="rowCount">
+           <number>0</number>
+          </property>
+          <column>
+           <property name="text">
+            <string>거래량</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>현재가</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>행사가</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>현재가</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>거래량</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_order">
+          <property name="title">
+           <string>Order (stock/option)</string>
+          </property>
+          <widget class="QProgressBar" name="progressBar_power">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>180</y>
+             <width>71</width>
+             <height>23</height>
+            </rect>
+           </property>
+           <property name="value">
+            <number>0</number>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+          <widget class="QComboBox" name="comboBox_acc">
+           <property name="geometry">
+            <rect>
+             <x>90</x>
+             <y>30</y>
+             <width>76</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_auto_order">
+           <property name="geometry">
+            <rect>
+             <x>90</x>
+             <y>60</y>
+             <width>75</width>
+             <height>23</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>자동주문</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_callhave">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>120</y>
+             <width>75</width>
+             <height>23</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Call_Have</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_puthave">
+           <property name="geometry">
+            <rect>
+             <x>90</x>
+             <y>120</y>
+             <width>75</width>
+             <height>23</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Put_Have</string>
+           </property>
+          </widget>
+          <widget class="QProgressBar" name="progressBar_order">
+           <property name="geometry">
+            <rect>
+             <x>90</x>
+             <y>180</y>
+             <width>71</width>
+             <height>23</height>
+            </rect>
+           </property>
+           <property name="value">
+            <number>0</number>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_myhave">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>60</y>
+             <width>75</width>
+             <height>23</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>잔고확인</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_market_start_3">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>150</y>
+             <width>75</width>
+             <height>23</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>market_start</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_market_ending_c">
+           <property name="geometry">
+            <rect>
+             <x>90</x>
+             <y>150</y>
+             <width>75</width>
+             <height>23</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>market_end</string>
+           </property>
+          </widget>
+          <widget class="QComboBox" name="comboBox_acc_stock">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>30</y>
+             <width>76</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_fu_buy_have">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>90</y>
+             <width>75</width>
+             <height>23</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Future_s_Buy</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_fu_sell_have">
+           <property name="geometry">
+            <rect>
+             <x>90</x>
+             <y>90</y>
+             <width>75</width>
+             <height>23</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Future_s_Sell</string>
+           </property>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="chartLayout"/>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1078</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <tabstops>
+  <tabstop>checkbox_realtime</tabstop>
+  <tabstop>pushButton_datapickup</tabstop>
+  <tabstop>comboBox_year</tabstop>
+  <tabstop>comboBox_monthmall</tabstop>
+  <tabstop>comboBox_date</tabstop>
+  <tabstop>comboBox_time</tabstop>
+  <tabstop>tableWidget_optionprice</tabstop>
+  <tabstop>comboBox_acc</tabstop>
+  <tabstop>pushButton_myhave</tabstop>
+  <tabstop>pushButton_auto_order</tabstop>
+  <tabstop>pushButton_callhave</tabstop>
+  <tabstop>pushButton_puthave</tabstop>
+  <tabstop>pushButton_market_start_3</tabstop>
+  <tabstop>pushButton_market_ending_c</tabstop>
+  <tabstop>pushButton_3</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
