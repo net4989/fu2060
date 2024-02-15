@@ -320,6 +320,10 @@ class MyWindow(Layout):
         # 1건씩 주문
         self.order_cnt_onetime = 1
 
+        # 선물 주문중인지 판단 변수(주문변수에 당월물 차월물 종목코드 있으면~~)
+        # self.future_s_ordering = True 일경우에는 옵션관련 선물관련 함수 미 실행
+        self.future_s_ordering = False
+
         # -----
         # 부팅시 => 1초 타이머 시작
         self.timer1.start(Future_s_Leverage_Int * 100)
@@ -1667,8 +1671,8 @@ class MyWindow(Layout):
 
         # =====
         # # -----
-        # self.item_list_cnt_type = {'code_no': ['101V3000', '101V6000', '201V2352', '201V2360'], 'cnt': [4, 2, 4, 10],
-        #                            'sell_buy_type': [1, 2, 2, 1], 'state': [0, 0, 0, 0], 'order_no': [1, 2, 1, 2]}
+        # self.item_list_cnt_type = {'code_no': ['101V3000', '101V6000', '201V2352', '201V2360'], 'cnt': [5, 2, 4, 10],
+        #                            'sell_buy_type': [2, 1, 2, 1], 'state': [0, 0, 0, 0], 'order_no': [1, 2, 1, 2]}
 
         # self.option_myhave = {'code': ['101V3000', '101V6000'], 'myhave_cnt': [2, 2], 'sell_or_buy': [2, 2]}
         # =====
@@ -2304,22 +2308,25 @@ class MyWindow(Layout):
 
         # 텍스트로 처리함
         # 장시작시간(215: 장운영구분(0:장시작전, 2: 장종료전, 3: 장시작, 4, 8: 장종료, 9: 장마감)
+        # 08:40:01 ~(1분간격)~ 08:59:01 ~(10초간격) 08:59:51
         if self.MarketEndingVar == '0':
-            self.printt(self.MarketEndingVar)
-            self.printt('0:장시작전')
-            # 시간표시
-            current_time = time.ctime()
-            self.printt(current_time)
-            # pass
+            # self.printt(self.MarketEndingVar)
+            # self.printt('0:장시작전')
+            # # 시간표시
+            # current_time = time.ctime()
+            # self.printt(current_time)
+            pass
         # 장시작시간(215: 장운영구분(0:장시작전, 2: 장종료전, 3: 장시작, 4, 8: 장종료, 9: 장마감)
+        # 15:20:01 ~(1분간격)~ 15:29:00 ~(10초간격)~ 15:29:50
         elif self.MarketEndingVar == '2':
-            self.printt(self.MarketEndingVar)
-            self.printt('2: 장종료전')    # 15:20:01(1분간격 정도로 반복)
-            # 시간표시
-            current_time = time.ctime()
-            self.printt(current_time)
-            # pass
+            # self.printt(self.MarketEndingVar)
+            # self.printt('2: 장종료전')
+            # # 시간표시
+            # current_time = time.ctime()
+            # self.printt(current_time)
+            pass
 
+        # 09:00:01
         elif self.MarketEndingVar == '3':
             self.printt(self.MarketEndingVar)
             self.printt('3: 장시작')
@@ -2349,9 +2356,10 @@ class MyWindow(Layout):
         #     current_time = time.ctime()
         #     self.printt(current_time)
 
+        # 16:00:00
         elif self.MarketEndingVar == 'c':
             self.printt(self.MarketEndingVar)
-            self.printt('c: 장마감')    # 16:00:01
+            self.printt('c: 장마감')
             # 시간표시
             current_time = time.ctime()
             self.printt(current_time)
@@ -6542,6 +6550,9 @@ class MyWindow(Layout):
         # 선물 먼저
         # 최종 결과 - 선물 동시에 몽땅(x) :: 선물도 1건씩만
         if (self.futrue_s_data['item_code'][0] in self.item_list_cnt_type['code_no']) or (self.futrue_s_data_45['item_code'][0] in self.item_list_cnt_type['code_no']):
+            # 선물 주문중인지 판단 변수(주문변수에 당월물 차월물 종목코드 있으면~~)
+            # self.future_s_ordering = True 일경우에는 옵션관련 선물관련 함수 미 실행
+            self.future_s_ordering = True
             item_list_cnt_type = {'code_no': [], 'cnt': [], 'sell_buy_type': []}
             # 0(선택) 있으면서 / 1(주문) 여부와 상관없이(옵션 1(주문) 무시)
             if 0 in self.item_list_cnt_type['state']:
@@ -6561,16 +6572,20 @@ class MyWindow(Layout):
                                 item_list_cnt_type['sell_buy_type'].append(self.item_list_cnt_type['sell_buy_type'][i])
                                 # state : 1(주문) 변경
                                 self.item_list_cnt_type['state'][i] = 1
-                                # 주문 던지기
-                                # 검색된 종목코드 여부
-                                item_list_cnt = len(item_list_cnt_type['code_no'])
-                                if item_list_cnt > 0:
-                                    self.future_s_market_sell_buy(item_list_cnt_type)
-                                    break
+                # 주문 던지기
+                # 검색된 종목코드 여부
+                item_list_cnt = len(item_list_cnt_type['code_no'])
+                if item_list_cnt > 0:
+                    self.future_s_market_sell_buy(item_list_cnt_type)
+                    self.printt('self.item_list_cnt_type - "timer1sec" # 선물 먼저')
+                    self.printt(self.item_list_cnt_type)
+                    # break
+                    # 혹시 차월물이 있을경우를 대비해서 # break 주석처리
                                 # -----
-
-                self.printt('self.item_list_cnt_type - "timer1sec" # 선물 먼저')
-                self.printt(self.item_list_cnt_type)
+        else:
+            # 선물 주문중인지 판단 변수(주문변수에 당월물 차월물 종목코드 있으면~~)
+            # self.future_s_ordering = True 일경우에는 옵션관련 선물관련 함수 미 실행
+            self.future_s_ordering = False
 
         # 옵션
         # 0(선택) 있으면서 1(주문) 없고
@@ -6850,13 +6865,16 @@ class MyWindow(Layout):
                     if self.MarketEndingVar == '3':
                         # 주식매수 종목검색
                         self.stock_buy_items_search(stock_tarket_item_list)
-                # 자동주문 버튼 True
-                if self.auto_order_button_var == True:
-                    # 옵션 델타 튜닝 = > 항상 현재에 맞춰서
-                    self.option_s_delta_tuning_fn(float_center_option_price, float_center_option_price_db_last, basket_cnt)
-                    # 옵션 델타 튜닝 함수에 접수안된건 삭제 기능이 있으므로 선물 준비보다 먼저 실행
-                    # 선물 (진입/청산) 준비
-                    self.future_s_market_ready(last_option_s_hedge_ratio, basket_cnt)
+                # 선물 주문중인지 판단 변수(주문변수에 당월물 차월물 종목코드 있으면~~)
+                # self.future_s_ordering = True 일경우에는 옵션관련 선물관련 함수 미 실행
+                if self.future_s_ordering == False:
+                    # 자동주문 버튼 True
+                    if self.auto_order_button_var == True:
+                        # 옵션 델타 튜닝 = > 항상 현재에 맞춰서
+                        self.option_s_delta_tuning_fn(float_center_option_price, float_center_option_price_db_last, basket_cnt)
+                        # 옵션 델타 튜닝 함수에 접수안된건 삭제 기능이 있으므로 선물 준비보다 먼저 실행
+                        # 선물 (진입/청산) 준비
+                        self.future_s_market_ready(last_option_s_hedge_ratio, basket_cnt)
                 # 타이머 시작
                 self.timer1.start(Future_s_Leverage_Int * 100)
                 self.printt('stock_buy_items_search / future_s_market_ready / option_s_delta_tuning_fn 시작 timer1 재시작')
@@ -7014,21 +7032,24 @@ class MyWindow(Layout):
             # -----
             # 당일날 선물 롤오버 없었을 경우에만
             if self.future_s_roll_over_run_var == False:
-                # 자동주문 버튼 True
-                if self.auto_order_button_var == True:
-                    # 타이머 중지
-                    self.timer1.stop()
-                    self.printt('future_s_roll_over_fn / option_s_delta_tuning_fn 시작 timer1 중지')
-                    # 옵션 델타 튜닝 = > 항상 현재에 맞춰서
-                    self.option_s_delta_tuning_fn(float_center_option_price, float_center_option_price_db_last, basket_cnt)
-                    # 옵션 델타 튜닝 함수에 접수안된건 삭제 기능이 있으므로 선물 준비보다 먼저 실행
-                    # 선물 (진입/청산) 준비
-                    self.future_s_roll_over_fn(basket_cnt)
-                    # 이미 로오버 처리했으면 변수 True 실행 못하게
-                    self.future_s_roll_over_run_var = True
-                    # 타이머 시작
-                    self.timer1.start(Future_s_Leverage_Int * 100)
-                    self.printt('future_s_roll_over_fn / option_s_delta_tuning_fn 시작 timer1 재시작')
+                # 선물 주문중인지 판단 변수(주문변수에 당월물 차월물 종목코드 있으면~~)
+                # self.future_s_ordering = True 일경우에는 옵션관련 선물관련 함수 미 실행
+                if self.future_s_ordering == False:
+                    # 자동주문 버튼 True
+                    if self.auto_order_button_var == True:
+                        # 타이머 중지
+                        self.timer1.stop()
+                        self.printt('future_s_roll_over_fn / option_s_delta_tuning_fn 시작 timer1 중지')
+                        # 옵션 델타 튜닝 = > 항상 현재에 맞춰서
+                        self.option_s_delta_tuning_fn(float_center_option_price, float_center_option_price_db_last, basket_cnt)
+                        # 옵션 델타 튜닝 함수에 접수안된건 삭제 기능이 있으므로 선물 준비보다 먼저 실행
+                        # 선물 (진입/청산) 준비
+                        self.future_s_roll_over_fn(basket_cnt)
+                        # 이미 로오버 처리했으면 변수 True 실행 못하게
+                        self.future_s_roll_over_run_var = True
+                        # 타이머 시작
+                        self.timer1.start(Future_s_Leverage_Int * 100)
+                        self.printt('future_s_roll_over_fn / option_s_delta_tuning_fn 시작 timer1 재시작')
             # -----
 
         # 장마감 self.MarketEndingVar == 'c' 연결선물 및 즐겨찾기 주식 시세조회
@@ -8507,6 +8528,7 @@ class MyWindow(Layout):
                     item_list_cnt_type['code_no'].append(self.futrue_s_data_45['item_code'][0])
                     item_list_cnt_type['cnt'].append(basket_cnt * roll_over_diff_cnt)
                     item_list_cnt_type['sell_buy_type'].append(2)
+        self.printt('item_list_cnt_type :: future_s_roll_over_fn 결과')
         self.printt(item_list_cnt_type)
 
         # 검색된 종목코드 여부
