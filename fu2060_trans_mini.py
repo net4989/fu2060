@@ -228,9 +228,10 @@ class MyWindow(Layout):
         # 장시작시간(215: 장운영구분(0:장시작전, 2: 장종료전, 3: 장시작, 4, 8: 장종료, 9: 장마감)
         self.MarketEndingVar = '0'
         # 선물변화 퍼센트(1.001 / 0.999 - 0.1% , 1.0008 / 0.9992 - 0.1%의 80%, 1.0005 / 0.9995 - 0.1%의 50%)
-        self.future_s_percent_high = 1.002
-        self.future_s_percent_low = 0.998
+        self.future_s_percent_high = 1.001
+        self.future_s_percent_low = 0.999
         # 옵션 다항회귀 분봉(0.1% => 0.2%)로 변경후 테스트(2021년 12월 22일~)
+        # 좀더 촘촘하게 모니터링이 필요할것 같아서(fu2060_trans_mini로 대대적인 수정 이후) :: 20240222
 
         # 시분초 : db 중복 시분 제외 변수선언
         self.db_overlap_time_list = []
